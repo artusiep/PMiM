@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
-#include"TimeSystem.h"
-#include "Gui.h"
+#include "SystemController.h"
 
 
 //----------------------------------
@@ -128,18 +127,17 @@ int MenuStanu::zaakceptuj() {
 
 // ----------------------------------------
 
-Gui* p_interface;
-TimeSystem time;
 
 void setup() {
   Serial.begin(9600);
   if(Serial) {
     Serial.println("--- Uruchomienie Systemu (setup)---");
   }
-  Gui interface(&time);
-  p_interface = &interface;
+  SystemController systemController;
+  systemController.loop();
+
 }
 
 void loop() {
-  p_interface->loop();
+
 }

@@ -9,24 +9,27 @@ extern "C" {
 
 //Tworze obiekt
 
-MainMenu::MainMenu(LiquidCrystal_I2C screen) {
+MainMenu::MainMenu(LiquidCrystal_I2C lcd ) {
   m_currentMenu = 0;
-  m_screen = screen;
+  m_lcd  = lcd ;
 }
 
 MainMenu::~MainMenu() {}
 
 void MainMenu::refreshTopLine() {
-  m_screen.setCursor(0,0);
+  m_lcd .setCursor(0,0);
   switch(m_currentMenu){
     case 0:
-      m_screen.print("[Stan]Temp Log  ");
+      m_lcd .print("[Stan]Temp Log  ");
+      Serial.println("[Stan]Temp Log  ");
       break;
     case 1:
-      m_screen.print(" Stan[Temp]Log  ");
+      m_lcd .print(" Stan[Temp]Log  ");
+      Serial.println(" Stan[Temp]Log  ");
       break;
     case 2:
-      m_screen.print(" Stan Temp[Log] ");
+      m_lcd .print(" Stan Temp[Log] ");
+      Serial.println(" Stan Temp Log  ");
       break;
   }
   return;
@@ -48,7 +51,7 @@ void MainMenu::increase() {
   refreshScreen();
 }
 
-int MainMenu::zaakceptuj() {
+int MainMenu::accept() {
   Serial.println("Enter");
   return m_currentMenu;
 }

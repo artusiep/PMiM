@@ -1,33 +1,21 @@
 #include "Gui.h"
 
-Gui::Gui(TimeSystem* timeSystem) {
-  m_timeSystem = timeSystem;
-/*  m_enterButton = Button(6);
-  m_leftButton = Button(7);
-  m_rightButton = Button(8);
-  m_returnButton = Button(9);*/
+Gui::Gui() {
   lcd.init();
   lcd.clear();
   lcd.backlight();
-  m_mainMenu = MainMenu(lcd);
-  m_mainMenu.refreshScreen();
+  mainMenu = MainMenu(lcd);
+  mainMenu.refreshScreen();
   Serial.println("Gui Construktor");
 }
 
 Gui::~Gui() {}
 
-void Gui::loop() {
-  m_leftButton.checkIfPushed();
-  m_rightButton.checkIfPushed();
-  m_enterButton.checkIfPushed();
-  m_returnButton.checkIfPushed();
-  if(m_leftButton.isPushed()) {
-    m_mainMenu.decrease();
-  }
-  if(m_rightButton.isPushed()) {
-    m_mainMenu.increase();
-  }
-  if(m_enterButton.isPushed()) {
-    m_mainMenu.zaakceptuj();
-  }
+void Gui::print(int col, int row, String text) {
+  lcd.setCursor(col,row);
+  lcd.print(text);
 }
+
+/**MainMenu Gui::getMainMenu() {
+  return m_mainMenu;
+}*/

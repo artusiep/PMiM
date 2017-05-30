@@ -4,20 +4,20 @@
 #define M_WIERSZE 2
 #include <LiquidCrystal_I2C.h>
 
-class MainMenu {
+class MainMenu  {
   private:
     int m_iloscMenu = 3;
     int m_currentMenu;
-    LiquidCrystal_I2C m_screen{0x27, M_KOLUMNY, M_WIERSZE};
+    LiquidCrystal_I2C m_lcd {0x27, M_KOLUMNY, M_WIERSZE};
     void refreshTopLine();
     //void odswierzDolnaLinie();
   public:
-    MainMenu(LiquidCrystal_I2C screen);
+    MainMenu(LiquidCrystal_I2C lcd );
     ~MainMenu();
     void refreshScreen();
     void increase();
     void decrease();
-    int zaakceptuj();
+    int accept();
 };
 
 #endif
