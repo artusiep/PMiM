@@ -2,9 +2,13 @@
 
 
 
-#define MAX_SIZE 20
+TimeSystem::TimeSystem() {
+  Serial.println("Time System Construktor");
+}
 
-TimeSystem::TimeSystem() {}
+static TimeSystem TimeSystem::getInstance() {
+  return timeSystem;
+}
 
 String TimeSystem::getWholeDate() {
   return( String(day()) + ":" +
@@ -14,7 +18,18 @@ String TimeSystem::getWholeDate() {
 }
 
 String TimeSystem::getTime() {
-  return( String(hour()) + ":" +
-          String(minute()) + ":" +
-          String(second()));
+  return( conv(hour()) + ":" +
+          conv(minute()) + ":" +
+          conv(second()));
 }
+
+String TimeSystem::conv(int timeUnit) {
+  if (timeUnit / 10 == 0) {
+    return "0" + String(timeUnit);
+  }
+  return String(timeUnit);
+}
+
+/*void TimeSystem::modify() {
+  setTime(int hr,int min,int sec,int day, int month, int yr);
+}*/

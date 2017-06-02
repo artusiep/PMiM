@@ -4,18 +4,18 @@ Gui::Gui() {
   lcd.init();
   lcd.clear();
   lcd.backlight();
-  mainMenu = MainMenu(lcd);
-  mainMenu.refreshScreen();
   Serial.println("Gui Construktor");
 }
 
-Gui::~Gui() {}
+Gui::~Gui() {
+  Serial.println("Gui destruktor");
+}
 
-void Gui::print(int col, int row, String text) {
+void Gui::guiprint(int col, int row, String text) {
   lcd.setCursor(col,row);
   lcd.print(text);
 }
 
-/**MainMenu Gui::getMainMenu() {
-  return m_mainMenu;
-}*/
+TimeSystem* Gui::getTimeSystem() {
+  return this->timeSystem;
+}

@@ -1,5 +1,5 @@
-#ifndef MAINMENU_H
-#define MAINMENU_H
+#ifndef STATEMENU_H
+#define STATEMENU_H
 
 #if ARDUINO >= 100
     #include "Arduino.h"
@@ -11,22 +11,22 @@ extern "C" {
 
 #include "Gui.h"
 
-
-class MainMenu : public Gui {
+class StateMenu : public Gui {
   private:
-
-    int m_iloscMenu = 3;
+    int m_iloscMenu = 4;
     int m_currentMenu = 0;
-    void refreshTopLine();
-    void refreshBottomLine();
   public:
-    MainMenu();
-    ~MainMenu();
+    StateMenu();
+    ~StateMenu();
     virtual void refreshScreen() override;
     virtual void increase() override;
     virtual void decrease() override;
     virtual int accept() override;
     virtual int undo() override;
+    void refreshScreenRekuperator();
+    void refreshScreenWoda();
+    void refreshScreenSerce();
+    void refreshScreenZrodlo();
 };
 
 #endif

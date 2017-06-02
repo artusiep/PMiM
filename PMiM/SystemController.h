@@ -9,17 +9,20 @@ extern "C" {
 }
 #endif
 
-#include "Gui.h"
+#include "MainMenu.h"
+#include "StateMenu.h"
 #include <Button.h>
 #include "TimeSystem.h"
 
-class SystemController{
+class SystemController {
   private:
-    Gui view;
+    Gui* view;
     Button buttons[4];
-    TimeSystem m_timeSystem;
+    TimeSystem m_timeSystem = TimeSystem::getInstance();
+    String time;
   public:
     SystemController();
+    ~SystemController();
     void loop();
 };
 

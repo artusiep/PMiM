@@ -1,42 +1,36 @@
 #include "MainMenu.h"
-#if ARDUINO >= 100
-    #include "Arduino.h"
-#else
-extern "C" {
-    #include "WConstants.h"
-}
-#endif
 
-//Tworze obiekt
-
-MainMenu::MainMenu(LiquidCrystal_I2C lcd ) {
-  m_currentMenu = 0;
-  m_lcd  = lcd ;
+MainMenu::MainMenu( ) {
+  int menuType = 10;
 }
 
 MainMenu::~MainMenu() {}
 
 void MainMenu::refreshTopLine() {
-  m_lcd .setCursor(0,0);
   switch(m_currentMenu){
     case 0:
-      m_lcd .print("[Stan]Temp Log  ");
+      guiprint(0,0,"[Stan]Temp Log  ");
       Serial.println("[Stan]Temp Log  ");
       break;
     case 1:
-      m_lcd .print(" Stan[Temp]Log  ");
+      guiprint(0,0," Stan[Temp]Log  ");
       Serial.println(" Stan[Temp]Log  ");
       break;
     case 2:
-      m_lcd .print(" Stan Temp[Log] ");
-      Serial.println(" Stan Temp Log  ");
+      guiprint(0,0," Stan Temp[Log] ");
+      Serial.println(" Stan Temp[Log] ");
       break;
   }
   return;
 }
 
+void MainMenu::refreshBottomLine() {
+  guiprint(8,1,getTimeSystem()->getTime());
+}
+
 void MainMenu::refreshScreen() {
   refreshTopLine();
+  refreshBottomLine();
 }
 
 void MainMenu::decrease() {
@@ -55,3 +49,5 @@ int MainMenu::accept() {
   Serial.println("Enter");
   return m_currentMenu;
 }
+
+int MainMenu::undo() {return -1;}
