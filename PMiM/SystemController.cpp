@@ -7,6 +7,7 @@ SystemController::SystemController() {
   view = new MainMenu;
   view->refreshScreen();
   setTime(16,30,00,02, 06, 2017);
+  TempCounter = 0;
 }
 
 SystemController::~SystemController() {
@@ -39,9 +40,22 @@ void SystemController::loop() {
           view = new MainMenu;
       }
     }
+
     if(m_timeSystem.getTime() != time) {
       time = m_timeSystem.getTime();
       view->refreshScreen();
+      ++TempCounter;
+      if(TempCounter == 30){
+        TempCounter = 0;
+        Serial.print("Temperatura: ");
+        Serial.print(m_tempSystem.getDTH11Temp());
+        Serial.print(" C\t");
+        Serial.print("Wilgotnosc: ");
+        Serial.print(m_tempSystem.getDTH11Humi());
+        Serial.print(" %\n");
+
+      }
     }
+
   }
 }

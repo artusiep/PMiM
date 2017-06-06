@@ -18,9 +18,7 @@ void StateMenu::refreshScreenZrodlo() {
     guiprint(0,0,"      Grunt     ");
 }
 
-StateMenu::StateMenu() {
-  int menuType = 1;
-}
+StateMenu::StateMenu() {}
 
 StateMenu::~StateMenu() {}
 

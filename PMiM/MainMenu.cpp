@@ -1,8 +1,6 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu( ) {
-  int menuType = 10;
-}
+MainMenu::MainMenu( ) {}
 
 MainMenu::~MainMenu() {}
 

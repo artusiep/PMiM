@@ -6,8 +6,9 @@ TimeSystem::TimeSystem() {
   Serial.println("Time System Construktor");
 }
 
-static TimeSystem TimeSystem::getInstance() {
-  return timeSystem;
+TimeSystem & TimeSystem::getInstance() {
+  static TimeSystem singleton;
+  return singleton;
 }
 
 String TimeSystem::getWholeDate() {

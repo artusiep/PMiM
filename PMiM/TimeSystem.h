@@ -13,10 +13,9 @@ extern "C" {
 
 class TimeSystem {
   private:
-    static TimeSystem timeSystem;
     TimeSystem();
   public:
-    static TimeSystem getInstance();
+    static TimeSystem & getInstance();
     String getWholeDate();
     String getTime();
     String conv(int timeUnit);
