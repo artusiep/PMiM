@@ -19,7 +19,7 @@ class TimeSystem {
     String getWholeDate();
     String getTime();
     String conv(int timeUnit);
-
+    void modify(int flag, bool increase);
 };
 
 #endif

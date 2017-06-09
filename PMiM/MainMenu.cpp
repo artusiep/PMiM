@@ -1,29 +1,28 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu( ) {}
+MainMenu::MainMenu( ) {
+  refreshScreen();
+}
 
 MainMenu::~MainMenu() {}
 
 void MainMenu::refreshTopLine() {
-  switch(m_currentMenu){
+  switch(currentMenu){
     case 0:
-      guiprint(0,0,"[Stan]Temp Log  ");
-      Serial.println("[Stan]Temp Log  ");
+      guiprint(0,0,"[Stan]Temp Czas ");
       break;
     case 1:
-      guiprint(0,0," Stan[Temp]Log  ");
-      Serial.println(" Stan[Temp]Log  ");
+      guiprint(0,0," Stan[Temp]Czas ");
       break;
     case 2:
-      guiprint(0,0," Stan Temp[Log] ");
-      Serial.println(" Stan Temp[Log] ");
+      guiprint(0,0," Stan Temp[Czas]");
       break;
   }
   return;
 }
 
 void MainMenu::refreshBottomLine() {
-  guiprint(8,1,getTimeSystem()->getTime());
+  guiprint(1,1,getTimeSystem()->getWholeDate());
 }
 
 void MainMenu::refreshScreen() {
@@ -31,21 +30,25 @@ void MainMenu::refreshScreen() {
   refreshBottomLine();
 }
 
+int8_t MainMenu::getMenuID() {
+  return menuID;
+}
+
 void MainMenu::decrease() {
   Serial.println("Left");
-  m_currentMenu = (m_currentMenu + 2) % 3;
+  currentMenu = (currentMenu + 2) % numberOfMenu;
   refreshScreen();
 }
 
 void MainMenu::increase() {
   Serial.println("Right");
-  m_currentMenu = (m_currentMenu + 1) % 3;
+  currentMenu = (currentMenu + 1) % numberOfMenu;
   refreshScreen();
 }
 
-int MainMenu::accept() {
+int8_t MainMenu::accept() {
   Serial.println("Enter");
-  return m_currentMenu;
+  return currentMenu;
 }
 
-int MainMenu::undo() {return -1;}
+int8_t MainMenu::undo() {return -1;}

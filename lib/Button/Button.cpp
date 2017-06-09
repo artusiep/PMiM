@@ -35,10 +35,10 @@ Button::~Button() {}
 
 void Button::checkIfPushed() {
 	if((m_state == false) and (digitalRead(m_pin) == HIGH)) {
-		delay(20);
+		delay(30);
 		m_state = true;
 		while(digitalRead(m_pin) == HIGH);
-		delay(20);
+		delay(30);
 	}
 }
 

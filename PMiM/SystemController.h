@@ -12,6 +12,7 @@ extern "C" {
 #include <Button.h>
 #include "MainMenu.h"
 #include "StateMenu.h"
+#include "TimeMenu.h"
 #include "TimeSystem.h"
 #include "TempSystem.h"
 
@@ -23,6 +24,7 @@ class SystemController {
     TempSystem m_tempSystem = TempSystem::getInstance();
     String time;
     uint8_t TempCounter;
+    void creteMenuFromMainMenu();
   public:
     SystemController();
     ~SystemController();

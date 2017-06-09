@@ -13,16 +13,18 @@ extern "C" {
 
 class StateMenu : public Gui {
   private:
-    int m_iloscMenu = 4;
-    int m_currentMenu = 0;
+    int8_t numberOfMenu = 4;
+    int8_t menuID = 1;
+    int8_t currentMenu = 0;
   public:
     StateMenu();
     ~StateMenu();
     virtual void refreshScreen() override;
     virtual void increase() override;
     virtual void decrease() override;
-    virtual int accept() override;
-    virtual int undo() override;
+    virtual int8_t accept() override;
+    virtual int8_t undo() override;
+    virtual int8_t getMenuID() override;
     void refreshScreenRekuperator();
     void refreshScreenWoda();
     void refreshScreenSerce();

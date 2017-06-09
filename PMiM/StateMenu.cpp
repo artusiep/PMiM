@@ -18,12 +18,14 @@ void StateMenu::refreshScreenZrodlo() {
     guiprint(0,0,"      Grunt     ");
 }
 
-StateMenu::StateMenu() {}
+StateMenu::StateMenu() {
+  refreshScreen();
+}
 
 StateMenu::~StateMenu() {}
 
 void StateMenu::refreshScreen() {
-  switch(m_currentMenu) {
+  switch(currentMenu) {
     case 0:
       refreshScreenRekuperator();
       break;
@@ -41,18 +43,24 @@ void StateMenu::refreshScreen() {
 }
 
 void StateMenu::decrease() {
-  m_currentMenu = (m_currentMenu + 3) % 4;
+  currentMenu = (currentMenu + numberOfMenu - 1) % numberOfMenu;
+  refreshScreen();
 }
 
 void StateMenu::increase() {
-   m_currentMenu = (m_currentMenu + 1) % 4;
+   currentMenu = (currentMenu + 1) % numberOfMenu;
+   refreshScreen();
 }
 
-int StateMenu::accept() {
-  return m_currentMenu;
+int8_t StateMenu::accept() {
+  return currentMenu;
+  refreshScreen();
 }
 
-
-int StateMenu::undo() {
+int8_t StateMenu::undo() {
   return 0;
+}
+
+int8_t StateMenu::getMenuID() {
+  return menuID;
 }

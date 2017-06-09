@@ -13,7 +13,7 @@ extern "C" {
 #include <DallasTemperature.h>
 
 #define ONEWIREBUS 2
-#define TEMPERATUREPRECISION 9
+#define TEMPERATUREPRECISION 10
 
 #define DHTPIN 3
 #define DHTTYPE DHT11
@@ -25,13 +25,15 @@ class TempSystem {
     uint8_t numberOfThermometers;
     DeviceAddress tempDeviceAddress;
     void showIfParasite();
-    void getThermomethersTemp();
+    void printDdress(DeviceAddress thermometerAddress);
     String getThermometherTemp(DeviceAddress);
+
 
     DHT dht{DHTPIN, DHTTYPE};
 
     TempSystem();
   public:
+    void getThermomethersTemp();
     static TempSystem & getInstance();
     float getDTH11Temp();
     float getDTH11Humi();

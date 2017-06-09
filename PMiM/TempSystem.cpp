@@ -65,7 +65,10 @@ void TempSystem::getThermomethersTemp(){
   for(uint8_t i=0;i<numberOfThermometers; i++) {
     if(thermometers.getAddress(tempDeviceAddress, i))	{
       Serial.print("Temperature for device: ");
-      Serial.println(i,DEC);
+      Serial.print(i,DEC);
+      Serial.print(" ");
+      Serial.print("0");
+      Serial.print(tempDeviceAddress[1], HEX);
       Serial.println(
         getThermometherTemp(tempDeviceAddress)
       );

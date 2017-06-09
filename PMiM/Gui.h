@@ -22,12 +22,14 @@ class Gui{
     Gui();
     virtual ~Gui();
     //TimeSystem timeSystem;
-    void guiprint(int col, int row, String text);
+    void guiprint(int8_t col, int8_t row, String text);
+    void guiBlink(int8_t col, int8_t row);
     TimeSystem* getTimeSystem();
+    virtual int8_t getMenuID() = 0;
     virtual void increase() = 0;
     virtual void decrease() = 0;
-    virtual int accept() = 0;
-    virtual int undo() = 0;
+    virtual int8_t accept() = 0;
+    virtual int8_t undo() = 0;
     virtual void refreshScreen() = 0;
 };
 
