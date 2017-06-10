@@ -10,11 +10,11 @@ extern "C" {
 #endif
 
 #include <Button.h>
-#include "MainMenu.h"
-#include "StateMenu.h"
-#include "TimeMenu.h"
-#include "TimeSystem.h"
-#include "TempSystem.h"
+#include "Menus/MainMenu.h"
+#include "Menus/StateMenu.h"
+#include "Menus/TimeMenu.h"
+#include "Systems/TimeSystem.h"
+#include "Systems/TempSystem.h"
 
 class SystemController {
   private:
